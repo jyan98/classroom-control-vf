@@ -43,12 +43,16 @@ node default {
   # Example:
   #   class { 'my_class': }
   include role::classroom
-  file { '/etc/motd':
-    ensure  => file,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    content => "Puppet helps with idempotency.  Should help with that, too.\n",
+  #file { '/etc/motd':
+  #  ensure  => file,
+  #  owner   => 'root',
+  #  group   => 'root',
+  #  mode    => '0644',
+  #  content => "Puppet helps with idempotency.  Should help with that, too.\n",
+  #}
+  exec { 'cowsay "Welcome to ${::fqdn}!" > /etc/motd':
+    creates => '/etc/motd',
+    path => '/usr/local/bin',
   }
 }
 
