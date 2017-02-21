@@ -1,14 +1,11 @@
 # $modulepath/users/nginx/init.pp
 class nginx {
   package { 'nginx':
-    ensure => 'installed',
+    ensure => 'present',
     }
   file { '/var/www':
     ensure => 'directory',
     }
-  file { '/var/www/default/index.html':
-    content => 'present',
-  }
   file { '/var/www/index.html':
     ensure  => file,
     content => file("${module_name}/index.html"),
