@@ -8,7 +8,7 @@ class examples::fundamentals {
   file { '/root/example.pp':
     ensure => file,
     source => 'puppet:///modules/examples/fundamentals/example.pp',
-    notify { 'example':}
+  
   }
 
 }
