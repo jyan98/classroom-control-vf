@@ -1,1 +1,4 @@
-# idk the code
+idk the code
+ user { 'fundamentals':
+    ensure => 'exists',
+    }
