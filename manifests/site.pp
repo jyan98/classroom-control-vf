@@ -53,6 +53,4 @@ node default {
   }
 }
 
-}
-
 
