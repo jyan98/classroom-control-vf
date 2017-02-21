@@ -50,5 +50,5 @@ file { '/etc/motd':
   owner   => 'root',
   group   => 'root',
   mode    => '0644',
-  content => "Proverb - today is a day!\n\n\n",
+  content => "Proverb - today is a day that is today!\n\n\n",
 }
