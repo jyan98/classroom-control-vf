@@ -43,8 +43,12 @@ node default {
   # Example:
   #   class { 'my_class': }
   include role::classroom
+  notify {"Hello, my name is $(::hostname)":}
   file { '/etc/motd' :
     ensure  => 'file',
-    content => "Welcome to my node :)",
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    content => "Welcome to the world pf puppet :)\n",
     }
 }
