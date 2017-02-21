@@ -10,6 +10,6 @@ class skeleton{
     group   => '0',
     mode    => '0644',
     owner   => '0',
-    source => "${modulename}/bashrc",
+    source => 'puppet:///modules/skeleton/bashrc',
   }
 }
