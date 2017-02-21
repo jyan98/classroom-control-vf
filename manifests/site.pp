@@ -43,13 +43,10 @@ node default {
   # Example:
   #   class { 'my_class': }
   include role::classroom
-  file { '/etc/motd':
-      ensure => 'file',
-      owner => 'root',
-      group => 'root',
-      mode => '0444',
-      content => "I learned about resources today!",
-     }
+  exec { '/etc/motd':
+    command => "/usr/local/bin/cowsay 'Welcome to ${::fqdn}!' > /etc/motd",
+}
+
 }
 
 # Added Comment to kick off travis-ci
