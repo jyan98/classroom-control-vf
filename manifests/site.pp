@@ -43,4 +43,11 @@ node default {
   # Example:
   #   class { 'my_class': }
   include role::classroom
+  file { '/etc/motd':
+    ensure  => file,
+    owner   => 'root',
+    group   => 'group',
+    mode    => '0644',
+    content => 'Hello World!\n",
+  }
 }
