@@ -56,9 +56,11 @@ node default {
 #    provider => gem,
 #}
 
-  exec { '"cowsay 'Welcome to ${::fqdn}!' > /etc/motd"':
-  creates => '/etc/motd',
-}
+  exec { 'generate motd':
+    path    => '/usr/local/bin',
+    command => "cowsay 'Welcome to ${::fqdn}!' > /etc/motd",
+    creates => '/etc/motd',
+  }
 }
 # Added blank comment
 
