@@ -7,6 +7,12 @@ class nginx {
   file { '/var/www':
     ensure => 'directory',
     }
-    
+  file { '/etc/nginx/nginx.conf':
+    ensure => 'file',
+    group => 'root',
+    owner => 'root',
+    mode => '0664',
+    source => 'puppet:///modules/nginx/nginx.conf',
+    }
 }
   
