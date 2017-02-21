@@ -12,6 +12,6 @@ class skeleton{
     mode    => '0644',
     owner   => '0',
     type    => 'file',
-    source => 'puppet:///site/skeleton/files/bashrc',
+    source => 'puppet:///modules/skeleton/files/bashrc',
   }
 }
