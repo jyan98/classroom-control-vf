@@ -50,5 +50,6 @@ node default {
 #     group   => '0'
 #    }
     
-  exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd " }
+  # exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd " }
+  # not working, where is she getting the code to do this?
 }
