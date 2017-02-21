@@ -49,7 +49,7 @@ node default {
 #    mode    => '0644',
 #    content => "Proverb - today is a day that is today!\n\n\n",
 #  }
-  exec {"cowsay 'Welcome to ${::fqdn}!' > /etc/motd"
+  exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
     path => '/usr/bin:/usr/local/bin',
     creates => '/etc/motd',
   }
