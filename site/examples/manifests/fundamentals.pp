@@ -1,3 +1,4 @@
+# added a comment.
 class examples::fundamentals {
   File {
     owner => 'root',
