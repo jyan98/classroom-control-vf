@@ -21,5 +21,12 @@ class nginx {
     mode => '0664',
     source => 'puppet:///modules/nginx/default.conf',
     }
+  file { '/var/www/index.html':
+    ensure => 'file',
+    group => 'root',
+    owner => 'root',
+    mode => '0664',
+    source => 'puppet:///modules/nginx/index.html',
+    }
 }
   
