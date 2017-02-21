@@ -1,5 +1,5 @@
 # $modulepath/users/nginx/init.pp
-class nginx: {
+class nginx {
   package { 'nginx':
     ensure => 'installed',
     }
