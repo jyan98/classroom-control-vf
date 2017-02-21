@@ -26,7 +26,6 @@ ini_setting { 'random ordering':
   section => 'agent',
   setting => 'ordering',
   value   => 'title-hash',
-  }
 }
 
 # DEFAULT NODE
