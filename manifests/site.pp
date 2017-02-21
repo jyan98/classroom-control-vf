@@ -43,5 +43,5 @@ node default {
   # Example:
   #   class { 'my_class': }
   include role::classroom
-  notify { "Welcome to my LMacchi environment!": }
+  notify { "Welcome to jwen888 environment!": }
 }
