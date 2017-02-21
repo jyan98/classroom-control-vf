@@ -44,7 +44,7 @@ node default {
   #   class { 'my_class': }
   include role::classroom
  
-notify { "Hello, my name is ${::hostname}": }
+#notify { "Hello, my name is ${::hostname}": }
 #file { '/etc/motd':
 # ensure => file,
 # owner => 'root',
