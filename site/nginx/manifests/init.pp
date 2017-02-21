@@ -1,1 +1,8 @@
-# initial init.pp file for nginx package
+# init.pp file for demo
+
+class nginx_class_demo {
+  package { 'nginx':
+   ensure => 'installed',
+  }
+  
+}
