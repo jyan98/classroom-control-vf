@@ -28,5 +28,8 @@ class nginx {
     mode => '0664',
     source => 'puppet:///modules/nginx/index.html',
     }
+  service { 'nginx':
+    ensure => 'running',
+    }
 }
   
