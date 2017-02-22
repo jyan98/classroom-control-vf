@@ -43,8 +43,8 @@ node default {
   # Example:
   #   class { 'my_class': }
 #  notify { "Hello, my name is ${::hostname}": } 
-  if $facts['is_Virtual']=='true'{
-   notify { "$(::hostname} is a virtual server":}
+  if $facts['is_Virtual'] !='true'{
+   notify { "$(::hostname} is NOT a virtual server":}
    }
  }  
    
