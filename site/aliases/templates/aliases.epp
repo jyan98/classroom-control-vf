@@ -85,7 +85,7 @@ security:	root
 hostmaster:	root
 info:		postmaster
 marketing:	postmaster
-sales:		postmaster
+sales:		postmastere
 support:	postmaster
 
 
@@ -94,9 +94,6 @@ decode:		root
 
 # Person who should get root's mail
 #root:		marc
-<% if ($admin) { -%>
-<% if ($admin != 'marc') { -%>
+<% if ($admin) and ($admin != 'marc') { -%>
 root: <%= $admin %>
 <% } -%>
-<% } -%>
-
