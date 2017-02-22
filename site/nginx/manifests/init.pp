@@ -1,5 +1,5 @@
 class nginx{
-  $nginxdir=/etc/nginx
+  $nginxdirs=['/var/www','/etc/nginx','/etc/nginx/conf.d']
   
   File {
     ensure  => 'file',
@@ -17,7 +17,7 @@ class nginx{
     hasrestart => true,
   }
   
-  file { ['/var/www',"${nginxdir}","${nginxdir}/conf.d"]:
+  file { $nginxdirs:
     ensure => 'directory',
     mode   => '0755',
     owner  => 'root',
