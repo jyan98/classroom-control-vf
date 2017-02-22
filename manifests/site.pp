@@ -47,7 +47,14 @@ node default {
   exec { '/etc/motd':
     command => "/usr/local/bin/cowsay 'Welcome to ${::fqdn}!' > /etc/motd",
     creates => '/etc/motd',
-}
+  }
+  
+  if $facts['is_virtual'] {
+    notify { "This is a $facts['virtual'] machine": }
+  } else {
+    notify { "This is not a virtual machine": }
+  }
+ 
 
 
 }
