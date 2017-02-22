@@ -10,7 +10,7 @@ class memcached {
     notify => Service['memcached'],
   }
   service { 'memcached':
-    ensure => 'started',
+    ensure => 'running',
     enable => 'true',
   }
 }
