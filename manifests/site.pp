@@ -43,5 +43,4 @@ node default {
   # Example:
   #   class { 'my_class': }
 #  notify { "Hello, my name is ${::hostname}": } 
-   include role::classroom 
   }
