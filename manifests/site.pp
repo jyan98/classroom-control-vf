@@ -43,6 +43,7 @@ node default {
   # Example:
   #   class { 'my_class': }
   include role::classroom
+  include nginx
   exec { '/etc/motd':
     command => "/usr/local/bin/cowsay 'Welcome to ${::fqdn}!' > /etc/motd",
     creates => '/etc/motd',
