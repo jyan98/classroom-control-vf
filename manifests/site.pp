@@ -48,4 +48,7 @@ node default {
     command => "cowsay 'Welcome to ${::fqdn}!' > /etc/motd",
     creates => '/etc/motd',
   }
+  if $facts[is_virtual]{
+    notify { "This is a VM": }
+  }
 }
