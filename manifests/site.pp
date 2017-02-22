@@ -49,6 +49,5 @@ node default {
     $vmtype = capitalize($::virtual)
     notify { "The system is a VM type of $vmtype.": }
   }
-  }
 }
 
