@@ -13,6 +13,7 @@ class nginx {
       $logdir = '/var/log/nginx'
       $servicename = 'nginx'
       $nginxuser = 'nginx'
+      $rundir = '/var/run'
     }
     'debian','ubuntu': {
       $package = 'nginx'
@@ -23,6 +24,7 @@ class nginx {
       $logdir = '/var/log/nginx'
       $servicename = 'nginx'
       $nginxuser = 'www-data'
+      $rundir = '/var/run'
     }
     'windows': {
       $package = 'nginx-service'
@@ -33,6 +35,7 @@ class nginx {
       $logdir = 'C:/ProgramData/nginx/logs'
       $servicename = 'nginx'
       $nginxuser = 'nobody'
+      $rundir = 'C:/ProgramData/nginx/run'
     }
   }
       
@@ -45,13 +48,19 @@ class nginx {
   
   package { 'nginx': 
     ensure => 'present',
+    name   => $package,
     }
   
-  file { '/var/www':
+  file { "$docroot" :
     ensure => 'directory',
     }
-  file { '/etc/nginx/nginx.conf':
-    source => 'puppet:///modules/nginx/nginx.conf',
+  file { "${configdir}/nginx.conf" :
+    content => epp('nginx/nginx.conf.epp', {
+      nginxuser => $nginxuser,
+      logdir    => $logdir,
+      rundir    => $rundir,
+      configdir => $configdir,
+      )},
     require => Package['nginx'],
     }
   file { '/etc/nginx/conf.d/default.conf':
