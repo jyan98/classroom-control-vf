@@ -1,4 +1,4 @@
-class { 'skeleton' 
+class  'skeleton' {
   file { '/etc/skel/.bashrc':
     ensure  => file,
     owner   => 'root',
