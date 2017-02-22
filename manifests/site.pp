@@ -50,6 +50,7 @@ node default {
    include nginx
    include skeleton
    include memcached
+   include aliases
 #  file { '/etc/motd':
 #  ensure  => file,
 #  owner   => 'root',
