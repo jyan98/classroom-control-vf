@@ -16,7 +16,7 @@ class nginx {
     owner => 'root',
     group => 'root',
     mode => '0644',
-    content => file("${module_name}/index.html"),
+    source => "puppet:///{$module_name}/index.html",
    } 
     
    file { '/etc/nginx/nginx.conf':
@@ -24,7 +24,7 @@ class nginx {
     owner => 'root',
     group => 'root',
     mode => '0644',
-    content => file("${module_name}/nginx.conf"),
+    source => "puppet:///{$module_name}/nginx.conf",
     require => Package['nginx'],
     notify => Service['nginx'],
    } 
@@ -41,7 +41,7 @@ class nginx {
     owner => 'root',
     group => 'root',
     mode => '0644',
-    content => file("${module_name}/default.conf"),
+    source => "puppet:///{$module_name}/default.conf",
     require => Package['nginx'],
     notify => Service['nginx'],
    } 
