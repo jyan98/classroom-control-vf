@@ -1,14 +1,11 @@
 class nginx{
   package { 'nginx':
     ensure => present,
-    before => File['/etc/nginx/nginx.conf',
-                   '/etc/nginx/conf.d/default.conf'],
   }
   service { 'nginx':
     ensure     => running,
     enable     => true,
     hasrestart => true,
-    require    => Package['nginx']
   }
   
   file { '/var/www/':
