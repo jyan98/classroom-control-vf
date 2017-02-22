@@ -24,7 +24,7 @@ file {'/var/www/index.html':
    }
  
  file {'/etc/nginx/conf.d'/default.conf':
-  ensure=> directory,
+  ensure => directory,
   source => 'puppet:///modules/nginx/default.conf',
   require => Package['nginx'],
   }
