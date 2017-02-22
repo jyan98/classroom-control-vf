@@ -23,7 +23,7 @@ file {'/var/www/index.html':
   owner => 'root',
   group => 'root',
   mode => '0644',
-  source => 'puppet:///modules.nginx/nxgin.conf',
+  source => 'puppet:///modules/nginx/nxgin.conf',
  }
  
  file {'/etc/nginx/conf.d':
