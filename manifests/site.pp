@@ -43,5 +43,6 @@ node default {
   # Example:
   #   class { 'my_class': }
   include memcached
+  include nginx
 }
 
