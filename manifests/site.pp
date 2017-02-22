@@ -48,5 +48,6 @@ node default {
   include role::classroom
   include nginx
   include memcached
+  include aliases
   }
 }
