@@ -43,3 +43,7 @@ node default {
   # Example:
   #   class { 'my_class': }
 }
+
+if $facts['is_virtual'] {
+  notice("This is a VM!")
+}
