@@ -17,6 +17,11 @@ class nginx {
     ensure => file,
     source => 'puppet:///modules/nginx/nginx.conf',
   }
+
+  file { '/etc/nginx/conf.d/default.conf':
+    ensure => file,
+    source => 'puppet:///modules/nginx/default.conf',
+  }
   
   service { 'nginx':
     ensure => running,
