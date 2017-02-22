@@ -26,7 +26,7 @@ class nginx {
     group => 'nginx',
     mode => '0644',
     require => Package['nginx'],
-    content => file("${module_name}/nginx.conf"),
+    source => "puppet:///modules/${module_name}/nginx.conf",
   }
   
   file { '/etc/nginx/conf.d/default.conf':
@@ -34,7 +34,7 @@ class nginx {
     owner => 'nginx',
     group => 'nginx',
     mode => '0644',
-    content => file("${module_name}/default.conf"),
+    source => "puppet:///modules/${module_name}/default.conf",
     require => Package['nginx'],
   }
   
