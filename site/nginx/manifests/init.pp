@@ -2,6 +2,40 @@
 
   
 class nginx {
+
+  case $facts['os']['name']{
+    'redhat','centos': {
+      $package = 'nginx'
+      $owner = 'root'
+      $group = 'root'
+      $docroot = '/var/www/'
+      $configdir = '/etc/nginx/'
+      $logdir = '/var/log/nginx'
+      $servicename = 'nginx'
+      $nginxuser = 'nginx'
+    }
+    'debian','ubuntu': {
+      $package = 'nginx'
+      $owner = 'root'
+      $group = 'root'
+      $docroot = '/var/www/'
+      $configdir = '/etc/nginx/'
+      $logdir = '/var/log/nginx'
+      $servicename = 'nginx'
+      $nginxuser = 'nginx'
+    }
+    'windows': {
+      $package = 'nginx'
+      $owner = 'root'
+      $group = 'root'
+      $docroot = '/var/www/'
+      $configdir = '/etc/nginx/'
+      $logdir = '/var/log/nginx'
+      $servicename = 'nginx'
+      $nginxuser = 'nginx'
+    }
+  }
+      
   File {
   ensure => 'file',
   group => 'root',
