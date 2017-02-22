@@ -38,6 +38,10 @@ ini_setting { 'random ordering':
 # will be included in every node's catalog, *in addition* to any classes
 # specified in the console for that node.
 
+node /lmacchi/ {
+  notify { "This is a regex match": }
+}
+
 node 'lmacchi.puppetlabs.vm' {
   notify { "This is an exact match": }
 }
