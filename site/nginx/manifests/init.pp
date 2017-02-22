@@ -60,7 +60,7 @@ class nginx {
       logdir    => $logdir,
       rundir    => $rundir,
       configdir => $configdir,
-      )},
+      }),
     require => Package['nginx'],
     }
   file { '/etc/nginx/conf.d/default.conf':
