@@ -52,4 +52,5 @@ class nginx {
     enable     => true,
     hasrestart => true,
   }
+  
 }
