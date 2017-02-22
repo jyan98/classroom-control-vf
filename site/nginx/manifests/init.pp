@@ -5,10 +5,16 @@ class nginx {
     group  => 'root',
     mode   => '0644',
   }
-  
-  package { 'nginx':
+  Package {
     ensure => present,
   }
+  Service {
+    ensure     => running,
+    enable     => true,
+    hasrestart => true,
+  }
+  
+  package { 'nginx': }
   
   file { '/var/www':
     ensure => directory,
@@ -34,9 +40,5 @@ class nginx {
     notify  => Service['nginx'],
   }
   
-  service { 'nginx':
-    ensure     => running,
-    enable     => true,
-    hasrestart => true,
-  }
+  service { 'nginx': }
 }
