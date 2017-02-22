@@ -11,7 +11,7 @@ class nginx {
     }
     default: { fail("Operating system family ${facts['os']['family']} is not supported.") }
   }
-  if $facts['os']['family'] = 'Windows' {
+  if $facts['os']['family'] == 'Windows' {
     $package_name = 'nginx-service'
     $serverblock_dir = 'C/ProgramData/nginx/conf.d'
     $logs_dir = 'C/ProgramData/nginx/logs'
