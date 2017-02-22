@@ -16,6 +16,12 @@ class nginx{
     owner  => 'root',
     group  => 'root',
   }
+  file { '/etc/nginx/conf.d':
+    ensure => 'directory',
+    mode   => '0755',
+    owner  => 'root',
+    group  => 'root',
+  }
   
   file { '/etc/nginx/nginx.conf':
     ensure  => 'file',
