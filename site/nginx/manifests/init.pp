@@ -30,7 +30,8 @@ class nginx {
     group   => 'root',
     mode    => '0644',
 #    source  => 'puppet:///modules/nginx/nginx.conf'
-    content => file("${module_name}/nginx.conf"),
+    source  => 'puppet:///modules/nginx/nginx.conf'
+#    content => file("${module_name}/nginx.conf"),
     notify  => Service['nginx'],
   }
   
