@@ -16,7 +16,7 @@ class nginx {
     owner => 'nginx',
     group => 'nginx',
     mode => '0644',
-    content => file("${module_name}/index.html"),
+    source => "puppet:///modules/${module_name}/index.html",
     require => Package['nginx'],
   }
   
