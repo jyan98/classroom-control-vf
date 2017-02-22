@@ -96,7 +96,7 @@ decode:		root
 #root:		marc
 <% if ($admin) { -%>
 <% if ($admin != 'marc') { -%>
-root: <% $admin %>
+root: <%= $admin %>
 <% } -%>
 <% } -%>
 
