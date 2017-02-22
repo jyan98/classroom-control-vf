@@ -59,6 +59,12 @@ node default {
   include skeleton
   include nginx
   include memcached
+  
+  $is_virtual = $facts['is_virtual']
+  if ($is_virtual) {
+    $virtual = $facts['virtual']
+    notify { "hostname=$::hostname is_virtual=$is_virtual virtual=$virtual" }
+   }
 }
 
 
