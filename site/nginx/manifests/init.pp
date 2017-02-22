@@ -18,15 +18,18 @@ class nginx {
     }
   file { '/etc/nginx/nginx.conf':
     source => 'puppet:///modules/nginx/nginx.conf',
+    require => Package['nginx'],
     }
   file { '/etc/nginx/conf.d/default.conf':
     source => 'puppet:///modules/nginx/default.conf',
+    require => Package['nginx'],
     }
   file { '/var/www/index.html':
     source => 'puppet:///modules/nginx/index.html',
     }
   service { 'nginx':
     ensure => 'running',
+    subscribe => [File['/etc/nginx/nginx.conf'],File['/etc/nginx/conf.d/default.conf']],
     }
 }
   
