@@ -3,8 +3,8 @@
 class nginx {
 
   File {
-    owner => 'nginx',
-    group => 'nginx',
+    owner => 'root',
+    group => 'root',
     mode => '0644',
   }
   package { 'nginx':
