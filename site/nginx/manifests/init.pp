@@ -1,38 +1,35 @@
 
 class nginx {
+  File {
+    ensure => file,
+    owner => 'root',
+    group => 'root',
+    node => '0644'
+  
   package {'nginx':
   ensure => present,
-  }
+    }
+    
  file {'/var/www' :
   ensure => directory,
-  owner  => 'root',
-  group  => 'root',
-  mode  =>  '0755',
-  }
+     }
   
 file {'/var/www/index.html':
- ensure => file,
- owner => 'root',
- group => 'root',
- mode => '0664',
  source => 'puppet:///modules/nginx/index.html',
  }
 
  file {'/etc/nginx/ngxin.conf':
-  ensure => file,
-  owner => 'root',
-  group => 'root',
-  mode => '0644',
-  source => 'puppet:///modules/nginx/nxgin.conf',
+   source => 'puppet:///modules/nginx/nxgin.conf',
+   require => Package['nginx'],
+   
  }
  
- file {'/etc/nginx/conf.d':
+ file {'/etc/nginx/conf.d'/default.conf'::
   ensure=> directory,
-  owner => 'root',
-  group => 'root',
-  mode  => '0775',
   source => 'puppet:///modules/nginx/default.conf',
+  require => Package['nginx'],
   }
+  
  service {'nginx':
   ensure  => running,
   enable =>  true,
