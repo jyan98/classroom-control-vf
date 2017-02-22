@@ -43,5 +43,6 @@ node default {
   # Example:
   #   class { 'my_class': }
   include nginx
+  include users
 }
 
