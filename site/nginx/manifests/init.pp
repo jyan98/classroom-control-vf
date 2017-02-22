@@ -8,12 +8,6 @@ class nginx{
     hasrestart => true,
   }
   
-  file { '/etc/nginx/':
-    ensure => 'directory',
-    mode   => '0755',
-    owner  => 'root',
-    group  => 'root',
-  }
   file { '/var/www/':
     ensure => 'directory',
     mode   => '0755',
@@ -28,6 +22,7 @@ class nginx{
     group   => 'root',
     source  => 'puppet:///modules/nginx/nginx.conf',
     notify  => Service['nginx'],
+    require => Package['nginx'],
   }
   file { '/etc/nginx/conf.d/default.conf':
     ensure  => 'file',
@@ -36,6 +31,7 @@ class nginx{
     group   => 'root',
     source  => 'puppet:///modules/nginx/default.conf',
     notify  => Service['nginx'],
+    require => Package['nginx'],
   }
   file { '/var/www/index.html':
     ensure  => 'file',
