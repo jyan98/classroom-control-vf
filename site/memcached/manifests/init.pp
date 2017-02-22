@@ -16,4 +16,4 @@ file {'/etc/sysconfig/memcached':
   enable => true,
   subscribe => File['/etc/sysconfig/memcached'],
   }
-}
+
