@@ -1,6 +1,8 @@
 class nginx{
   package { 'nginx':
     ensure => present,
+    before => File['/etc/nginx/nginx.conf',
+                   '/etc/nginx/conf.d/default.conf'],
   }
   service { 'nginx':
     ensure     => running,
