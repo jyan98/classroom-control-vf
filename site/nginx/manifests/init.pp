@@ -5,22 +5,50 @@ class nginx {
    }
    
    file { '/var/www':
-    ensure => directory,
-    user => 'nginx'
+    ensure => 'directory',
+    user => 'root',
+    group => 'root',
+    mode => '0775',
    }
    
+   file { '/var/www/index.html':
+    ensure => 'file',
+    user => 'root',
+    group => 'root',
+    mode => '0644',
+    source => 'puppet://modules/nginx/index.html',
+   } 
+    
    file { '/etc/nginx/nginx.conf':
-    ensure => file,
+    ensure => 'file',
+    user => 'root',
+    group => 'root',
+    mode => '0644',
     source => 'puppet://modules/nginx/nginx.conf',
+    require => Package['nginx'],
+    notify => Service['nginx'],
    } 
    
-   file { '/etc/nginx/default.conf':
-    ensure => file,
-    source => 'puppet://modules/nginx/default.conf',
+   file { '/etc/nginx/conf.d':
+    ensure => 'directory',
+    user => 'root',
+    group => 'root',
+    mode => '0775',
+   }
+   
+   file { '/etc/nginx/conf.d/default.conf':
+    ensure => 'file',
+    user => 'root',
+    group => 'root',
+    mode => '0644',
+    source => 'puppet://modules/nginx/conf.d/default.conf',
+    require => Package['nginx'],
+    notify => Service['nginx'],
    } 
    
    service { 'nginx':
-    ensure => 'running'
+    ensure => 'running',
+    enable => 'true'
    }
 
 }
