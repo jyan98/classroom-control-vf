@@ -52,4 +52,10 @@ node default {
     creates => '/etc/motd',
     path => '/usr/local/bin/',
   }
+  
+  if $facts[is_virtual] = true {
+    notify { "Virtual machine of type: ${facts[virtual]}": }
+  } else {
+    notify { 'Physical machine': }
+  }
 }
