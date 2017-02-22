@@ -14,7 +14,8 @@ class nginx {
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    content => file("${module_name}/index.html"),
+#    content => file("${module_name}/index.html"),
+    source  => 'puppet:///modules/nginx/index.html'
   }
   
   file { '/etc/nginx':
