@@ -50,8 +50,9 @@ node default {
 #    mode    => '0644',
 #    content => "Hello World!\n",
 #  }
-  exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
-    path => '/usr/local/bin',
-    creates => '/etc/motd',
-  }
+#  exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
+#  path => '/usr/local/bin',
+#    creates => '/etc/motd',
+#  }
+  include users
 }
