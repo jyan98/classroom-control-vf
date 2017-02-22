@@ -2,7 +2,7 @@
     listen 80;
 
     ## DOM - This needs to change
-    root /var/www;
+    root <%= $docroot %>;
     index index.html index.htm;
 
     server_name _;
