@@ -1,5 +1,3 @@
+
 ## Declaring Users Class
-class users {
-
-
-}
+include users
