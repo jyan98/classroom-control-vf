@@ -1,6 +1,6 @@
 
 class nginx {
-  package {'nginx',
+  package {'nginx':
   ensure => present,
   }
  file {'/var/www' :
