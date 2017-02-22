@@ -6,15 +6,4 @@
     <h1>Hello World, Puppet is Fun!</h1>
   </body>
 </html>
-class base::linux {
- file { '/etc/passwd':
-   owner => 'root',
-   group => 'root',
-   mode  => '0644',
- }
- file { '/etc/shadow':
-   owner => 'root',
-   group => 'root',
-   mode  => '0440',
- }
-}
+
