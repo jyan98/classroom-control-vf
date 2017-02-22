@@ -3,6 +3,7 @@
 class nginx {
 
   File {
+    ensure => 'file',
     owner => 'root',
     group => 'root',
     mode => '0644',
@@ -10,27 +11,25 @@ class nginx {
   package { 'nginx':
    ensure => 'installed',
   }
+  
   service { 'nginx':
     ensure => 'running',
     enable => 'true',
+    subscribe => File['/etc/nginx/nginx.conf','/etc/nginx/conf.d/default.conf'],
 }
-file { '/var/www':
-  ensure => 'directory',
-}
-file { '/etc/nginx':
+file { ['/var/www','/etc/nginx']:
   ensure => 'directory',
 }
 
 file { '/etc/nginx/conf.d/default.conf':
-  ensure => 'file',
   source  => 'puppet:///modules/nginx/default.conf',
+  require => Package['nginx'],
 }
 file { '/etc/nginx/nginx.conf':
-  ensure => 'file',
+  require => Package['nginx'],
   source  => 'puppet:///modules/nginx/nginx.conf',
  } 
  file { '/var/www/index.html':
-  ensure => 'file',
   source  => 'puppet:///modules/nginx/index.html',
  } 
 }
