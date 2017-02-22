@@ -49,9 +49,11 @@ node default {
 #    mode    => '0644',
 #    content => "Proverb - today is a day that is today!\n\n\n",
 #  }
-  if $::virtual != 'physical' {
+  if $facts['is_virtual'] {
     $vmname = capitalize($::virtual)
     notify { "This is a ${vmname} virtual machine.": }
+  }else{
+    notify { "This is not a virtual machine.": }
   }
   include users
   include role::classroom
