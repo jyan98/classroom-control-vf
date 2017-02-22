@@ -38,6 +38,10 @@ ini_setting { 'random ordering':
 # will be included in every node's catalog, *in addition* to any classes
 # specified in the console for that node.
 
+if $facts['is_virtual'] {
+  warning('This is a virtual machine')
+}
+
 node default {
   # This is where you can declare classes for all nodes.
   # Example:
