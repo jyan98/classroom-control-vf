@@ -10,4 +10,4 @@ fi
 
 # User specific aliases and functions
 
-cowsay 'Hi douglas'
+cowsay 'Hi ${:fdqn} douglas'
