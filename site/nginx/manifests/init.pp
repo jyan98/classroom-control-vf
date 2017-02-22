@@ -30,6 +30,7 @@ class nginx {
     ensure  => file,
     source  => 'puppet:///modules/nginx/nginx.conf',
     notify  => Service['nginx'],
+    require => Package['nginx'],
   }
   
   file { '/etc/nginx/conf.d':
@@ -38,6 +39,7 @@ class nginx {
   file { '/etc/nginx/conf.d/default.conf':
     source  => 'puppet:///modules/nginx/default.conf',
     notify  => Service['nginx'],
+    require => Package['nginx'],
   }
   
   service { 'nginx': }
