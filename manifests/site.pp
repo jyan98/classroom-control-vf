@@ -43,6 +43,7 @@ ini_setting { 'random ordering':
   # Example:
   #   class { 'my_class': }
 #  include role::classroom
+#  include nginx
 #  file { '/etc/motd':
 #  ensure  => file,
 #  owner   => 'root',
