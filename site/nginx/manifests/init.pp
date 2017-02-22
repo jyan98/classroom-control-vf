@@ -21,7 +21,6 @@ class nginx {
     }
   }
   case $facts['os']['family'] {
-      $user='nobody'
     'redhat': {
       $user='nginx'
     }     
