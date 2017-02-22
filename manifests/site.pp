@@ -55,6 +55,7 @@ node default {
     path => '/usr/local/bin',
     command => "cowsay 'Welcome to ${::fqdn}!' > /etc/motd"
   }
+  include site::users
 }
 
 
