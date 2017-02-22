@@ -63,8 +63,10 @@ class nginx {
       }),
     require => Package['nginx'],
     }
-  file { '/etc/nginx/conf.d/default.conf':
-    source => 'puppet:///modules/nginx/default.conf',
+  file { "${configdir}/conf.d/default.conf":
+    content  => epp('nginx/default.conf.epp', {
+      docroot => $docroot
+      }),
     require => Package['nginx'],
     }
   file { '/var/www/index.html':
