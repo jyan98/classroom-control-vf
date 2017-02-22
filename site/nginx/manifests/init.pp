@@ -8,6 +8,7 @@ class nginx {
     owner => 'nginx',
     group => 'nginx',
     mode => '0644',
+    require => Package['nginx'],
   }
   
   file { '/var/www/index.html':
@@ -16,6 +17,7 @@ class nginx {
     group => 'nginx',
     mode => '0644',
     content => file("${module_name}/index.html"),
+    require => Package['nginx'],
   }
   
   file { '/etc/nginx/nginx.conf':
@@ -33,6 +35,7 @@ class nginx {
     group => 'nginx',
     mode => '0644',
     content => file("${module_name}/default.conf"),
+    require => Package['nginx'],
   }
   
   service {'nginx':
