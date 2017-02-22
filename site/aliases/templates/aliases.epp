@@ -94,7 +94,9 @@ decode:		root
 
 # Person who should get root's mail
 #root:		marc
-<% if ($admin != 'marc') && ($admin) { -%>
+<% if ($admin) { -%>
+<% if ($admin != 'marc') { -%>
 <% root: $admin %>
+<% } -%>
 <% } -%>
 
