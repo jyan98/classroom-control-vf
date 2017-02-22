@@ -49,5 +49,6 @@ node default {
   group   => 'root',
   mode    => '0644',
   content => "puppet puppet puppet......\n",
+  include users
   }
 }
