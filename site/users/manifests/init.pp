@@ -1,4 +1,6 @@
-idk the code
- user { 'fundamentals':
-    ensure => 'exists',
-    }
+# $modulepath/users/manifests/init.pp
+class users {
+  user { 'fundamentals':
+    ensure => present,
+  }
+}
