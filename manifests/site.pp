@@ -43,7 +43,7 @@ node default {
   # Example:
   #   class { 'my_class': }
 #  notify { "Hello, my name is ${::hostname}": } 
-#  include role::classroom 
+   include role::classroom 
   
 #  file { '/etc/motd' :
 #   ensure  => 'file',
@@ -58,5 +58,5 @@ node default {
  #    }
 #  include users
 #  include skeleton
-#  include nginx
+   include nginx
 }
