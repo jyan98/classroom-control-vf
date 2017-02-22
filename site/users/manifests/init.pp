@@ -1,9 +1,9 @@
 class users {
  user {'fundamentals':
  ensure => present,
- }
- class users {
+  }
+class users {
   user {'fundamentals2':
-  ensure => present'
-}
+  ensure => present,
+  }
 }
