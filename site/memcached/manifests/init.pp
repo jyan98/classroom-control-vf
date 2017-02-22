@@ -1,6 +1,7 @@
+#  $modulepath/memcached/manifests/init.pp
 class memcached {
-package {'memcached':
- ensure  => present,
+ package {'memcached':
+  ensure  => present,
  }
  
 file {'/etc/sysconfig/memcached': 
