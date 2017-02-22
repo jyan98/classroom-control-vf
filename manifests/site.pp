@@ -9,6 +9,12 @@
 # http://docs.puppetlabs.com/guides/language_guide.html#nodes for more on
 # node definitions.)
 
+class profile::user {
+# [...]
+  include ssh
+}
+
+
 ## Active Configurations ##
 
 # PRIMARY FILEBUCKET
