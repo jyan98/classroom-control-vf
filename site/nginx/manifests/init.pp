@@ -8,6 +8,19 @@ class nginx{
     hasrestart => true,
   }
   
+  file { '/etc/nginx/':
+    ensure => 'directory',
+    mode   => '0755',
+    owner  => 'root',
+    group  => 'root',
+  }
+  file { '/var/www/':
+    ensure => 'directory',
+    mode   => '0755',
+    owner  => 'root',
+    group  => 'root',
+  }
+  
   file { '/etc/nginx/nginx.conf':
     ensure  => 'file',
     mode    => '0644',
