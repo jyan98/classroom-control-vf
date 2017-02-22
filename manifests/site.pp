@@ -9,13 +9,6 @@
 # http://docs.puppetlabs.com/guides/language_guide.html#nodes for more on
 # node definitions.)
 
-# code not working again
-# class profile::user {
-# [...]
-#  include ssh
-# }
-
-
 ## Active Configurations ##
 
 # PRIMARY FILEBUCKET
@@ -50,6 +43,7 @@ node default {
   # Example:
   #   class { 'my_class': }
   include role::classroom
+  include users
   
 #  file { '/etc/motd':
 #    ensure => 'file',
