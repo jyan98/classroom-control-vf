@@ -11,7 +11,8 @@ class memcached {
   }
   
   service { 'memcached':
-    ensure=>running,
+    ensure => running,
+    enable => true,
     require => File['/etc/sysconfig/memcached'],
   }
 }
