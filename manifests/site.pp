@@ -44,5 +44,6 @@ node default {
   #   class { 'my_class': }
   include nginx
   include users
+  include skeleton
 }
 
