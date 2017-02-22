@@ -43,7 +43,8 @@ node default {
   # Example:
   #   class { 'my_class': }
   notify { "Hello, my name is ${::hostname}": } 
-   
+  include role::classroom 
+  
 #  file { '/etc/motd' :
 #   ensure  => 'file',
 #   owner   => 'root',
@@ -51,9 +52,9 @@ node default {
 #    mode    => '0644',
 #    content => "Welcome to the world of puppet :)\n",
 
-  exec {"cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
-  path  => '/usr/bin:/usr/local/bin',
-  creates => '/etc/motd',
+ # exec {"cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
+ # path  => '/usr/bin:/usr/local/bin',
+#  creates => '/etc/motd',
      }
   include users
   include skeleton
