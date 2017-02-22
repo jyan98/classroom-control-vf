@@ -44,5 +44,11 @@ node default {
   #   class { 'my_class': }
   include memcached
   include nginx
+  
+  if $::virtual != 'physical' {
+    $vmtype = capitalize($::virtual)
+    notify { "The system is a VM type of $vmtype.": }
+  }
+  }
 }
 
