@@ -42,7 +42,7 @@ node default {
   # This is where you can declare classes for all nodes.
   # Example:
   #   class { 'my_class': }
-  notify { "Hello, my name is ${::hostname}": } 
+#  notify { "Hello, my name is ${::hostname}": } 
 #  include role::classroom 
   
 #  file { '/etc/motd' :
@@ -56,7 +56,7 @@ node default {
  # path  => '/usr/bin:/usr/local/bin',
 #  creates => '/etc/motd',
  #    }
-  include users
-  include skeleton
+#  include users
+#  include skeleton
 #  include nginx
 }
