@@ -21,16 +21,16 @@ file { '/var/www/index.html':
  file {'/etc/nginx/ngxin.conf':
   ensure => file,
   owner => 'root',
-  group => 'root'
-  mode => '0644'
+  group => 'root',
+  mode => '0644',
   source => 'puppet:///modules.nginx/nxgin.conf',
  }
  
  file {'/etc/nginx/conf.d':
   ensure=> directory,
-  owner => 'root'
-  group => 'root'
-  mode  => '0775'
+  owner => 'root',
+  group => 'root',
+  mode  => '0775',
   source => 'puppet:///modules/nginx/default.conf',
   }
  service {'nginx':
