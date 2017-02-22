@@ -3,7 +3,7 @@ class skeleton {
   ensure  => directory,
   owner  => 'root',
   group  => 'root',
-  mod    => '0755',
+  mode    => '0755',
  }
  
  file {'/etc/skel/.bashrc':
