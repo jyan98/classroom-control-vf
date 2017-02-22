@@ -1,6 +1,7 @@
  server {
     listen 80;
 
+    ## DOM - This needs to change
     root /var/www;
     index index.html index.htm;
 
