@@ -1,36 +1,73 @@
 class nginx {
+  case $facts['os']['family'] {
+    'redhat','debian': {
+      $package='nginx'
+      $owner='root'
+      $group='root'
+      $docroot='/var/www'
+      $confdir='/etc/nginx'
+      $logdir='/var/log/nginx'
+    }
+    'windows': {
+      $package='nginx-service'
+      $owner='Administrator'
+      $group='Administrators'
+      $docroot='C:/programdata/nginx/html'
+      $confdir='C:/programdata/nginx'
+      $logdir='C:/programdata/nginx/logs'
+    }
+    'default': {
+      fail("Module ${module_name} is not supported on ${facts['os']['family']} systems")
+    }
+  }
+  case $facts['os']['family'] {
+      $user='nobody'
+    'redhat': {
+      $user='nginx'
+    }     
+    'debian': {
+      $user='www-data'
+    }     
+    'windows': {
+      $user='nobody'
+    }
+  }
+    
   File {
     ensure => file,
-    owner => 'root',
-    group => 'root',
+    owner => $owner,
+    group => $group,
     mode => '0644',
   }
   
-  package { 'nginx':
+  package { $package:
     ensure => present,
   }
   
-  file { '/var/www':
+  file { [$docroot,"${confdir}/config.d"]:
     ensure => directory,
   }
-  file { '/var/www/index.html':
+
+  file { "${docroot}/index.html}:
     source  => 'puppet:///modules/nginx/index.html'
   }
-  
-  file { '/etc/nginx':
-    ensure => directory,
-  }
-  file { '/etc/nginx/nginx.conf':
-    source  => 'puppet:///modules/nginx/nginx.conf',
-    require => Package['nginx'],
+ 
+  file { "${confdir}/nginx.conf":
+    content => epp('nginx/nginx.conf.epp',
+      {
+        user => $user,
+        confdir => $confdir,
+        logdir => $logdir
+      }),
+    require => Package[$package],
     notify  => Service['nginx'],
   }
   
-  file { '/etc/nginx/conf.d':
-    ensure => directory,
-  }
-  file { '/etc/nginx/conf.d/default.conf':
-    source  => 'puppet:///modules/nginx/default.conf',
+  file { "${confdir}/default.conf":
+    content => epp('nginx/default.conf.epp',
+      {
+        docroot => $docroot,
+      }),
     require => Package['nginx'],
     notify  => Service['nginx'],
   }
@@ -39,7 +76,7 @@ class nginx {
     ensure     => running,
     enable     => true,
     hasrestart => true,
-    subscribe => [File['/etc/nginx/nginx.conf'],File['/etc/nginx/conf.d/default.conf']]
+    subscribe => [File["${confdir}/nginx.conf"],File["${confdir}/default.conf"]]
   }
   
 }
