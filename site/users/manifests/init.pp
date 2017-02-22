@@ -1,6 +1,6 @@
 # users/manifests/init.pp
 
-class site::users {
+class users {
   user { 'fundamentals':
     ensure => present,
   }
