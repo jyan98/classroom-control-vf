@@ -4,11 +4,11 @@ class nginx {
     ensure => file,
     owner => 'root',
     group => 'root',
-    node => '0644'
-  
+    node => '0644',
+   }
   package {'nginx':
   ensure => present,
-    }
+   }
     
  file {'/var/www' :
   ensure => directory,
@@ -21,10 +21,9 @@ file {'/var/www/index.html':
  file {'/etc/nginx/ngxin.conf':
    source => 'puppet:///modules/nginx/nxgin.conf',
    require => Package['nginx'],
-   
- }
+   }
  
- file {'/etc/nginx/conf.d'/default.conf'::
+ file {'/etc/nginx/conf.d'/default.conf':
   ensure=> directory,
   source => 'puppet:///modules/nginx/default.conf',
   require => Package['nginx'],
