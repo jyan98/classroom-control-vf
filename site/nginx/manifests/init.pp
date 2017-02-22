@@ -1,4 +1,13 @@
 class nginx{
+  $nginxdir=/etc/nginx
+  
+  File {
+    ensure  => 'file',
+    mode    => '0644',
+    owner   => 'root',
+    group   => 'root',
+  }
+  
   package { 'nginx':
     ensure => present,
   }
@@ -8,13 +17,7 @@ class nginx{
     hasrestart => true,
   }
   
-  file { '/var/www/':
-    ensure => 'directory',
-    mode   => '0755',
-    owner  => 'root',
-    group  => 'root',
-  }
-  file { '/etc/nginx/conf.d':
+  file { ['/var/www',"${nginxdir}","${nginxdir}/conf.d"]:
     ensure => 'directory',
     mode   => '0755',
     owner  => 'root',
@@ -22,28 +25,16 @@ class nginx{
   }
   
   file { '/etc/nginx/nginx.conf':
-    ensure  => 'file',
-    mode    => '0644',
-    owner   => 'root',
-    group   => 'root',
     source  => 'puppet:///modules/nginx/nginx.conf',
     notify  => Service['nginx'],
     require => Package['nginx'],
   }
   file { '/etc/nginx/conf.d/default.conf':
-    ensure  => 'file',
-    mode    => '0644',
-    owner   => 'root',
-    group   => 'root',
     source  => 'puppet:///modules/nginx/default.conf',
     notify  => Service['nginx'],
     require => Package['nginx'],
   }
   file { '/var/www/index.html':
-    ensure  => 'file',
-    mode    => '0644',
-    owner   => 'root',
-    group   => 'root',
     source  => 'puppet:///modules/nginx/index.html',
   }
 }
