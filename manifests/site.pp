@@ -9,10 +9,11 @@
 # http://docs.puppetlabs.com/guides/language_guide.html#nodes for more on
 # node definitions.)
 
-class profile::user {
+# code not working again
+# class profile::user {
 # [...]
-  include ssh
-}
+#  include ssh
+# }
 
 
 ## Active Configurations ##
