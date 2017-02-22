@@ -42,4 +42,9 @@ node default {
   # This is where you can declare classes for all nodes.
   # Example:
   #   class { 'my_class': }
+  if $facts['is_virtual'] {
+    notify { "This is a ${facts['virtual']} machine": }
+  } else {
+    notify { "This is not a virtual machine": }
+  }
 }
