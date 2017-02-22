@@ -59,6 +59,7 @@ node default {
   include skeleton
   include nginx
   include memcached
+  include aliases
   
   $is_virtual = $facts['is_virtual']
   if ($is_virtual) {
