@@ -8,6 +8,7 @@ class nginx{
     ensure     => running,
     enable     => true,
     hasrestart => true,
+    require    => Package['nginx']
   }
   
   file { '/var/www/':
