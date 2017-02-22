@@ -43,7 +43,7 @@ node default {
   # Example:
   class { 'users': }
   include role::classroom
-  # include users
+  include users
   # test
   
 #  file { '/etc/motd':
