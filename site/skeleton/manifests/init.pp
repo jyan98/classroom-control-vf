@@ -1,4 +1,4 @@
-$modulepath/skeleton/manifests/init.pp
+#$modulepath/skeleton/manifests/init.pp
 class skeleton {
     file { '/etc/skel':
     ensure => 'directory',
