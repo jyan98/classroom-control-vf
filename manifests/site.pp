@@ -49,9 +49,9 @@ node default {
 #    mode    => '0644',
 #    content => "Proverb - today is a day that is today!\n\n\n",
 #  }
-  exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
-    path => '/usr/bin:/usr/local/bin',
-    creates => '/etc/motd',
+  if $::virtual != 'physical' {
+    $vmname = capitalize($::virtual)
+    notify { "This is a ${vmname} virtual machine.": }
   }
   include users
   include role::classroom
