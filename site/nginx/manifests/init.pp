@@ -1,6 +1,6 @@
 # init.pp file for demo
 
-class nginx_class_demo {
+class nginx {
   package { 'nginx':
    ensure => 'installed',
   }
