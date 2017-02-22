@@ -23,7 +23,7 @@ file {'/var/www/index.html':
    require => Package['nginx'],
    }
  
- file {'/etc/nginx/conf.d'/default.conf':
+ file {'/etc/nginx/conf.d/default.conf':
   source => 'puppet:///modules/nginx/default.conf',
   require => Package['nginx'],
   }
