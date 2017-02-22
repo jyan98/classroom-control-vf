@@ -33,3 +33,9 @@ file { '/var/www/index.html':
   mode  => '0775'
   source => 'puppet:///modules/nginx/default.conf',
   }
+
+ service {'nginx':
+  ensure  => running,
+  enable =>  true,
+  }
+ }
