@@ -45,4 +45,8 @@ node default {
   include role::classroom
   notify { "Welcome to jwen888 environment!": }
   include skeleton
+  
+  if $::virtual != 'physical' {
+    $vmname = capitalize($::virtual)
+    notify { "This is a ${vmname} virtual machine.": }
 }
