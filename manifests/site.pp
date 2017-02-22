@@ -50,11 +50,10 @@ node default {
   }
   
   if $facts['is_virtual'] {
-    notify { "This is a $facts['virtual'] machine": }
+    notify { "This is a ${facts['virtual']} machine": }
   } else {
     notify { "This is not a virtual machine": }
   }
- 
 
 
 }
