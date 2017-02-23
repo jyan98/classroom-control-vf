@@ -49,9 +49,8 @@ class nginx {
   mode  => '0644',
   }
   
-  package { 'nginx': 
+  package { "${package}": 
     ensure => 'present',
-    name   => $package,
     }
   
   file { "$docroot" :
@@ -64,13 +63,13 @@ class nginx {
       rundir    => $rundir,
       configdir => $configdir,
       }),
-    require => Package['nginx'],
+    require => Package["${package"],
     }
   file { "${configdir}/conf.d/default.conf":
     content  => epp('nginx/default.conf.epp', {
       docroot => $docroot
       }),
-    require => Package['nginx'],
+    require => Package["${package}"],
     }
   file { "${docroot}/index.html":
     source => 'puppet:///modules/nginx/index.html',
