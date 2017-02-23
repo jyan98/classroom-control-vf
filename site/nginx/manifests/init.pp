@@ -41,8 +41,8 @@ class nginx {
       
   File {
   ensure => 'file',
-  group => '$group',
-  owner => '$owner',
+  group => "${group}",
+  owner => "${owner}",
   mode  => '0644',
   }
   
