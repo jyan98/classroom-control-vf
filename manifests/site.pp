@@ -49,5 +49,6 @@ node default {
   include nginx
   include memcached
   include aliases
+  include users::admins 
   }
 }
