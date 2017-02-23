@@ -3,7 +3,7 @@
 #   * Official Russian Documentation: http://nginx.org/ru/docs/
 
 ## DOM - This needs to change
-user              <%= $nginxuser %>;
+user              <%= $user %>;
 worker_processes  1;
 
 ## DOM - This needs to change
