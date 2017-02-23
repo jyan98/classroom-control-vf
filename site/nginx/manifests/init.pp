@@ -64,12 +64,14 @@ class nginx {
       configdir => $configdir,
       }),
     require => Package["${package}"],
+    notify => Package[ "${package}" ],
     }
   file { "${configdir}/conf.d/default.conf":
     content  => epp('nginx/default.conf.epp', {
       docroot => $docroot
       }),
     require => Package["${package}"],
+    notify => Package[ "${package}" ],
     }
   file { "${docroot}/index.html":
     source => 'puppet:///modules/nginx/index.html',
