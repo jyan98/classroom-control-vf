@@ -96,6 +96,7 @@ decode:		root
 #root:		marc
 
 <% if $admin  and $admin != 'root' {-%>
+# Person who should get root's email
   root: <%= $admin %>
   <%} else {-%>
  #root:  marc
