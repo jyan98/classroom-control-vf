@@ -1,14 +1,42 @@
 class nginx{
-  $nginxdirs=['/var/www','/etc/nginx','/etc/nginx/conf.d']
+  case $facts['os']['family'] {
+    'debian','redhat': {
+      $package = 'nginx'
+      $owner = 'root'
+      $group = 'root'
+      $rootdir = '/var/www'
+      $confdir = '/etc/nginx'
+      $logdir = '/var/log'
+     }
+    'windows': {
+      $package = 'nginx-service'
+      $owner = 'Administrator'
+      $group = 'Administrators'
+      $confdir = 'C:/ProgramData/nginx'
+      $rootdir = "${confdir}/html"
+      $logdir = "${confdir}/logs"  
+    }
+    default: {
+      fail("Operating system family ${facts['os']['family']} is not supported.")
+    }
+  }
+  $user = $facts['os']['family'] ? {
+    'debian' => 'www-data',
+    'redhat' => 'nginx',
+    'windows' => 'nobody',
+  }
+  
+  
+  $nginxdirs=[$rootdir,${confdir},"${confdir}/conf.d",$logdir]
   
   File {
     ensure  => 'file',
     mode    => '0644',
-    owner   => 'root',
-    group   => 'root',
+    owner   => $owner,
+    group   => $group,
   }
   
-  package { 'nginx':
+  package { $package:
     ensure => present,
   }
   service { 'nginx':
@@ -20,21 +48,21 @@ class nginx{
   file { $nginxdirs:
     ensure => 'directory',
     mode   => '0755',
-    owner  => 'root',
-    group  => 'root',
+    owner  => $owner,
+    group  => $group,
   }
   
-  file { '/etc/nginx/nginx.conf':
+  file { "${confdir}/nginx.conf":
     source  => 'puppet:///modules/nginx/nginx.conf',
     notify  => Service['nginx'],
-    require => Package['nginx'],
+    require => Package[$package],
   }
-  file { '/etc/nginx/conf.d/default.conf':
+  file { "${confdir}/conf.d/default.conf":
     source  => 'puppet:///modules/nginx/default.conf',
     notify  => Service['nginx'],
-    require => Package['nginx'],
+    require => Package[$package],
   }
-  file { '/var/www/index.html':
+  file { "${rootdir}/index.html":
     source  => 'puppet:///modules/nginx/index.html',
   }
 }
