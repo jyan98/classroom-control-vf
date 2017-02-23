@@ -1,0 +1,3 @@
+# $modulepath/hieradata/data/jyan98.puppetlabs.vm.yaml
+---
+message: "This is a message just for jyan"
