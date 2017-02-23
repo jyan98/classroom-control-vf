@@ -69,12 +69,12 @@ class nginx {
       }),
     require => Package['nginx'],
     }
-  file { '/var/www/index.html':
+  file { "${docroot}/index.html":
     source => 'puppet:///modules/nginx/index.html',
     }
   service { 'nginx':
     ensure => 'running',
-    subscribe => [File['/etc/nginx/nginx.conf'],File['/etc/nginx/conf.d/default.conf']],
+    subscribe => [File["${configdir}/nginx.conf"],File["${configdir}/conf.d/default.conf"]],
     }
 }
   
