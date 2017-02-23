@@ -1,7 +1,6 @@
  server {
     listen 80;
 
-    ## DOM - This needs to change
     root <%= $docroot %>;
     index index.html index.htm;
 
