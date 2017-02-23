@@ -12,7 +12,7 @@ class nginx {
       $configdir = '/etc/nginx'
       $logdir = '/var/log/nginx'
       $servicename = 'nginx'
-      $nginxuser = 'nginx'
+      $user = 'nginx'
       $rundir = '/var/run'
     }
     'debian','ubuntu': {
@@ -23,7 +23,7 @@ class nginx {
       $configdir = '/etc/nginx'
       $logdir = '/var/log/nginx'
       $servicename = 'nginx'
-      $nginxuser = 'www-data'
+      $user = 'www-data'
       $rundir = '/var/run'
     }
     'windows': {
@@ -34,7 +34,7 @@ class nginx {
       $configdir = 'C:/ProgramData/nginx/'
       $logdir = 'C:/ProgramData/nginx/logs'
       $servicename = 'nginx'
-      $nginxuser = 'nobody'
+      $user = 'nobody'
       $rundir = 'C:/ProgramData/nginx/run'
     }
     'default': {
@@ -58,7 +58,7 @@ class nginx {
     }
   file { "${configdir}/nginx.conf" :
     content => epp('nginx/nginx.conf.epp', {
-      nginxuser => $nginxuser,
+      nginxuser => $user,
       logdir    => $logdir,
       rundir    => $rundir,
       configdir => $configdir,
