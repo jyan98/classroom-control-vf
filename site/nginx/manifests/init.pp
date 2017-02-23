@@ -37,6 +37,9 @@ class nginx {
       $nginxuser = 'nobody'
       $rundir = 'C:/ProgramData/nginx/run'
     }
+    'default': {
+      fail("Operating system ${facts['os']['name']} is not supported.")
+    }
   }
       
   File {
