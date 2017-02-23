@@ -74,7 +74,7 @@ class nginx {
   file { "${docroot}/index.html":
     source => 'puppet:///modules/nginx/index.html',
     }
-  service { 'nginx':
+  service { $servicename:
     ensure => 'running',
     subscribe => [File["${configdir}/nginx.conf"],File["${configdir}/conf.d/default.conf"]],
     }
