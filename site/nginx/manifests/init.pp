@@ -78,7 +78,6 @@ class nginx {
     }
   service { $servicename:
     ensure => 'running',
-    subscribe => [File["${configdir}/nginx.conf"],File["${configdir}/conf.d/default.conf"]],
     }
 }
   
