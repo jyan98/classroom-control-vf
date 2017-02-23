@@ -27,7 +27,7 @@ class nginx{
   }
   
   
-  $nginxdirs=[$rootdir,${confdir},"${confdir}/conf.d",$logdir]
+  $nginxdirs=[$rootdir,$confdir,"${confdir}/conf.d",$logdir]
   
   File {
     ensure  => 'file',
