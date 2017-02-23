@@ -56,7 +56,7 @@ ensure => file,
 content => epp('nginx/default.conf.epp',
 {
 docroot => $docroot,
-})
+}),
 notify => Service['nginx'],
 }
 service { 'nginx':
