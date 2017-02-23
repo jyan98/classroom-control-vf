@@ -49,9 +49,8 @@ class nginx {
   mode  => '0644',
   }
   
-  package { 'nginx': 
+  package { $package: 
     ensure => 'present',
-    name => "${package}",
     }
   
   file { "$docroot" :
