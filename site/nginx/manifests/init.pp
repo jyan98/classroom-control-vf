@@ -63,7 +63,7 @@ class nginx {
       rundir    => $rundir,
       configdir => $configdir,
       }),
-    require => Package["${package"],
+    require => Package["${package}"],
     }
   file { "${configdir}/conf.d/default.conf":
     content  => epp('nginx/default.conf.epp', {
