@@ -3,7 +3,7 @@
   
 class nginx {
 
-  case $facts['os']['name']{
+  case $facts['os']['family']{
     'redhat','centos': {
       $package = 'nginx'
       $owner = 'root'
@@ -38,7 +38,7 @@ class nginx {
       $rundir = 'C:/ProgramData/nginx/run'
     }
     'default': {
-      fail("Operating system ${facts['os']['name']} is not supported.")
+      fail("Operating system ${facts['os']['family']} is not supported.")
     }
   }
       
